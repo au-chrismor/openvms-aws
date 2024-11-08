@@ -1,0 +1,15 @@
+resource "aws_imagebuilder_distribution_configuration" "distribution" {
+    name = "${var.environment}-${var.project}-distribution"
+    distribution {
+        ami_distribution_configuration {
+            ami_tags = {
+                Name = "${var.environment}-application-${var.recipe_version}"
+                Owner = var.owner
+                Project = var.project
+            }
+            name = "${var.environment}-${var.recipe_version}-{{ imagebuilder:buildDate }}"
+        }
+        region = var.aws_region
+    }
+}
+
