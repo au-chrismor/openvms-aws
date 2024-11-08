@@ -1,19 +1,25 @@
-resource "aws_imagebuilder_distribution_configuration" "this" {
-  name = "local-distribution"
+resource "aws_imagebuilder_distribution_configuration" "openvms_dist" {
+  name = "example"
 
   distribution {
     ami_distribution_configuration {
-
       ami_tags = {
-        CostCenter = "IT"
+        CostCenter = var.cost_centre
+        Owner = var.owner
+        Project = var.project
       }
 
-      name = "example-{{ imagebuilder:buildDate }}"
+      name = "openvms-{{ imagebuilder:buildDate }}"
 
       launch_permission {
-        # user_ids = ["123456789012"]
+        user_ids = ["123456789012"]
       }
     }
-    region = var.aws_region
+
+    launch_template_configuration {
+      launch_template_id = "lt-0aaa1bcde2ff3456"
+    }
+
+    region = "us-east-1"
   }
 }
