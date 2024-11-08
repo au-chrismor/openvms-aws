@@ -21,10 +21,6 @@ variable "base_ami" {
     type = string
 }
 
-variable "code_file" {
-    type = string
-}
-
 variable "cost_centre" {
     type = string
 }
@@ -32,6 +28,11 @@ variable "cost_centre" {
 variable "environment" {
     type = string
     default = "dev"
+}
+
+variable "image_file" {
+    type = string
+    default = "openvms-community.qcow2"
 }
 
 variable "instance_types" {

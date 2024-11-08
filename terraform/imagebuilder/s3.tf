@@ -15,3 +15,9 @@ resource "aws_s3_bucket" "config_bucket" {
         Environment                 = var.environment
     }
 }
+
+resource "aws_s3_object_copy" "disc_file" {
+    bucket                          = aws_s3_bucket.code_bucket.bucket
+    key                             = var.image_file
+    source                          = "files/${var.image_file}"
+}

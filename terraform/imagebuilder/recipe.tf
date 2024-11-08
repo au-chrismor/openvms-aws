@@ -20,9 +20,6 @@ resource "aws_imagebuilder_image_recipe" "recipe" {
         component_arn = aws_imagebuilder_component.run_scripts.arn
     }
     component {
-      component_arn = aws_imagebuilder_component.install_monitor.arn
-    }
-    component {
         component_arn = aws_imagebuilder_component.load_code.arn
     }
 }
