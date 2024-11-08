@@ -31,17 +31,17 @@ resource "aws_imagebuilder_component" "run_scripts" {
                     {
                         action = "ExecuteBash"
                         inputs = {
-                            commands = ["sudo yum install -y python3-pip"]
+                            commands = ["sudo dnf group install \"Virtualization Host\" -y"]
                         }
-                        name      = "Install_Pip"
+                        name      = "Install_KVM"
                         onFailure = "Continue"
                     },
                     {
                         action = "ExecuteBash"
                         inputs = {
-                            commands = ["sudo pip3 install flask sqlalchemy"]
+                            commands = ["sudo dnf install qemu-img -y"]
                         }
-                        name      = "Install_Flask"
+                        name      = "Install_Qemu-Img"
                         onFailure = "Continue"
                     }
                 ]
@@ -65,7 +65,7 @@ resource "aws_imagebuilder_component" "load_code" {
                     {
                         action = "S3Download"
                         inputs = [{
-                            source = "s3://${var.code_bucket}/${var.code_file}"
+                            source = "s3://${aws_s3_bucket.code_bucket.bucket}/${var.code_file}"
                             destination = "/tmp/${var.code_file}"
                         }]
                         maxAttempts = 3

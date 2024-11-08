@@ -21,15 +21,11 @@ variable "base_ami" {
     type = string
 }
 
-variable "code_bucket" {
-    type = string
-}
-
 variable "code_file" {
     type = string
 }
 
-variable "config_bucket" {
+variable "cost_centre" {
     type = string
 }
 
@@ -40,23 +36,6 @@ variable "environment" {
 
 variable "instance_types" {
     type = list(string)
-}
-
-variable "newrelic_account" {
-    type = string
-}
-
-variable "newrelic_ini_file" {
-    type = string
-    default = "newrelic.ini"
-}
-
-variable "newrelic_license" {
-    type = string
-}
-
-variable "newrelic_user" {
-    type = string
 }
 
 variable "owner" {

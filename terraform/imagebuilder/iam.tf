@@ -38,12 +38,12 @@ resource "aws_iam_policy" "s3_policy" {
                 "s3:GetObjectAttributes"
               ]
               Resource = [
-                "arn:aws:s3:::${var.code_bucket}",
-                "arn:aws:s3:::${var.code_bucket}/",
-                "arn:aws:s3:::${var.code_bucket}/*",
-                "arn:aws:s3:::${var.config_bucket}",
-                "arn:aws:s3:::${var.config_bucket}/",
-                "arn:aws:s3:::${var.config_bucket}/*"
+                "${aws_s3_bucket.code_bucket.arn}",
+                "${aws_s3_bucket.code_bucket.arn}/",
+                "${aws_s3_bucket.code_bucket.arn}/*",
+                "${aws_s3_bucket.config_bucket.arn}",
+                "${aws_s3_bucket.config_bucket.arn}/",
+                "${aws_s3_bucket.config_bucket.arn}/*"
               ]
             }
           ]
