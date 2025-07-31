@@ -2,12 +2,12 @@ terraform {
     required_providers {
       aws = {
         source = "hashicorp/aws"
-        version = "~> 5.0"
+        version = "~> 6.0"
       }
     }
     backend "s3" {
       bucket = "cfm-tf-state"
-      key = "hilife-imagebuilder/state"
+      key = "openvms-imagebuilder/state"
       region = "ap-southeast-2"
     }
 }
