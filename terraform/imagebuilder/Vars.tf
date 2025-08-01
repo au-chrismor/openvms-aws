@@ -53,5 +53,5 @@ variable "recipe_version" {
 
 variable "volume_size" {
     type = number
-    default = 16
+    default = 64
 }
