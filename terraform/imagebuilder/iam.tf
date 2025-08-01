@@ -1,10 +1,10 @@
 resource "aws_iam_instance_profile" "instance_profile" {
-    name = "${var.environment}-${var.project}-ibuilder-profile"
+#    name = join("-", [var.environment, var.project, "ibuilder-profile"])
     role =aws_iam_role.imagebuilder_role.name
 }
 
 resource "aws_iam_role" "imagebuilder_role" {
-    name = "${var.environment}-${var.project}-ibuilder-role"
+#    name = "imagebuilder role"
     path = "/"
     assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
@@ -25,7 +25,7 @@ resource "aws_iam_role_policy_attachment" "imagebuilder_attach_3" {
 }
 
 resource "aws_iam_policy" "s3_policy" {
-    name = "${var.environment}-${var.project}-ibuilder-s3-policy"
+#    name = "${var.environment}-${var.project}-ibuilder-s3-policy"
     policy = jsonencode(
       {
           Version = "2012-10-17"
